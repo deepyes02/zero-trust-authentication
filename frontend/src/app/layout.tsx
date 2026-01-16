@@ -7,6 +7,8 @@ const nunitoSans = Nunito_Sans({
   display: "swap",
 });
 
+import { AuthProvider } from "./_components/AuthProvider";
+
 export const metadata: Metadata = {
   title: "Google Authentication",
   description: "Google Authentication",
@@ -22,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={nunitoSans.className}>
       <body style={{ margin: 0 }}>
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
