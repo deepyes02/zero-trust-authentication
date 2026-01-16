@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-01-16
+### Changed
+- **Branding Refresh**: Updated application title to "ZERO Trust" and footer to "It's been securely locked" to align with the core security principles.
+
+## [1.5.0] - 2026-01-16
+### Added
+- **Site-Wide Protection**: Extended Next.js Middleware to protect the entire application, including the home page.
+- **Simplified UI**: Streamlined the home page UI now that authentication is guaranteed by the global route guard.
+
+## [1.4.0] - 2026-01-16
+### Added
+- **Custom Login Page**: Designed and implemented a dedicated premium login page at `/login` to replace the default NextAuth sign-in screen.
+- **Improved UX**: Integrated automatic redirection to the custom login page for unauthorized access to protected routes.
+
 ## [1.3.0] - 2026-01-16
 ### Added
 - **Route Protection**: Implemented Next.js Middleware to globally protect the `/about` route.

@@ -4,7 +4,12 @@ import { useEffect, useState } from 'react';
 import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Home() {
-  const { data: session } = useSession();
+  const { data: session } = useSession({
+    required: true,
+    onUnauthenticated() {
+      signIn('google');
+    },
+  });
   const [data, setData] = useState<{ Hello?: string; error?: string } | null>(null);
   const [loading, setLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
@@ -24,8 +29,10 @@ export default function Home() {
       }
     }
 
-    fetchData();
-  }, []);
+    if (session) {
+      fetchData();
+    }
+  }, [session]);
 
   if (!mounted) {
     return (
@@ -39,32 +46,24 @@ export default function Home() {
     <div style={{ padding: '2rem' }}>
       <h1>Next.js + FastAPI + Google Auth</h1>
 
-      <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '4px' }}>
-        {session ? (
-          <div>
-            <p>Signed in as <strong>{session.user?.email}</strong></p>
-            {session.user?.image && (
-              <img src={session.user.image} alt="User Profile" style={{ borderRadius: '50%', width: '50px' }} />
+      <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '4px', background: '#f8f9fa' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            {session?.user?.image && (
+              <img src={session.user.image} alt="Profile" style={{ borderRadius: '50%', width: '40px' }} />
             )}
-            <p>Name: {session.user?.name}</p>
-            <button
-              onClick={() => signOut()}
-              style={{ padding: '0.5rem 1rem', cursor: 'pointer', background: '#ff4444', color: 'white', border: 'none', borderRadius: '4px' }}
-            >
-              Sign out
-            </button>
+            <div>
+              <p style={{ margin: 0, fontWeight: 'bold' }}>{session?.user?.name}</p>
+              <p style={{ margin: 0, fontSize: '0.85rem', color: '#666' }}>{session?.user?.email}</p>
+            </div>
           </div>
-        ) : (
-          <div>
-            <p>You are not signed in.</p>
-            <button
-              onClick={() => signIn('google')}
-              style={{ padding: '0.5rem 1rem', cursor: 'pointer', background: '#4285F4', color: 'white', border: 'none', borderRadius: '4px' }}
-            >
-              Sign in with Google
-            </button>
-          </div>
-        )}
+          <button
+            onClick={() => signOut()}
+            style={{ padding: '0.5rem 1rem', cursor: 'pointer', background: '#ff4444', color: 'white', border: 'none', borderRadius: '4px', fontWeight: '500' }}
+          >
+            Sign out
+          </button>
+        </div>
       </div>
 
       <div style={{ marginTop: '1rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '4px' }}>

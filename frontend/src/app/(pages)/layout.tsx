@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={nunitoSans.className}>
       <body style={{ margin: 0, minHeight: "100vh", display: "flex", flexDirection: "column" }}>
         <header style={{ padding: "1rem 2rem", background: "#f8f9fa", borderBottom: "1px solid #ddd", display: "flex", gap: "2rem", alignItems: "center" }}>
-          <h2 style={{ margin: 0, fontSize: "1.2rem", fontWeight: "bold" }}>Agentic AI</h2>
+          <h2 style={{ margin: 0, fontSize: "1.2rem", fontWeight: "bold" }}>ZERO Trust</h2>
           <nav style={{ display: "flex", gap: "1rem" }}>
             <Link href="/" style={{ textDecoration: "none", color: "#007bff" }}>Home</Link>
             <Link href="/about" style={{ textDecoration: "none", color: "#007bff" }}>About</Link>
@@ -37,7 +37,7 @@ export default function RootLayout({
           </AuthProvider>
         </main>
         <footer style={{ padding: "1rem 2rem", background: "#f8f9fa", borderTop: "1px solid #ddd", textAlign: "center", color: "#666" }}>
-          &copy; 2026 Agentic AI Team
+          It&apos;s been securely locked
         </footer>
       </body>
     </html>
