@@ -1,0 +1,35 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.2.0] - 2026-01-16
+### Added
+- **OAuth Flexibility**: Added `prompt: "select_account"` to the Google Provider to allow users to switch accounts easily.
+- **Improved UX**: Added a "Visual Showcase" section to the README with screenshots of both authenticated and restricted states.
+
+### Changed
+- **Performance Optimization**: Set `use_cache=True` (default) for dependency verification within a single request, but kept the logic modular for future adjustments.
+
+## [1.1.0] - 2026-01-16
+### Added
+- **Zero-Trust Security**: Implemented a mandatory `get_current_user` dependency in the FastAPI backend that cryptographically verifies the Google `id_token` on every request.
+- **Secure Proxy Layer**: Refactored Next.js API routes to securely retrieve tokens from the server-side session and forward them to the backend via `Authorization: Bearer` headers.
+- **Frontend Error Handling**: Updated the UI to display security-specific errors (401 Unauthorized) returned by the backend.
+- **Session Policy**: Restricted session duration to 24 hours (`maxAge: 24h`) for enhanced security.
+
+### Fixed
+- **Security Gap**: Fixed a critical vulnerability where the backend was serving data without verifying the user's identity.
+
+## [1.0.0] - 2026-01-16
+### Added
+- **Initial Authentication**: Basic Google Sign-In integration using `next-auth`.
+- **Project Structure**: Organized files into the `(pages)` route group for common layout sharing.
+- **Docker Orchestration**: Set up `docker-compose` for local development with hot-reloading for both frontend and backend.
+- **Layout Consolidation**: Implemented a shared layout with Global Header, Navigation, and Footer.
+- **Technical Docs**: Created `AUTHENTICATION.md` and initial `README.md`.
+
+---
+*End of day milestones achieved. Mission accomplished.* 🛡️🚀
