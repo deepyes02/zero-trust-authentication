@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-01-16
+### Added
+- **Route Protection**: Implemented Next.js Middleware to globally protect the `/about` route.
+- **Enhanced Guard**: Updated the `About` page component to strictly require a valid session, providing a secondary layer of protection and automatic redirection.
+
 ## [1.2.0] - 2026-01-16
 ### Added
 - **OAuth Flexibility**: Added `prompt: "select_account"` to the Google Provider to allow users to switch accounts easily.
