@@ -10,7 +10,7 @@ GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"gold": "Gold is only visible to logged in users.. :-) "}
 
 @app.get("/health")
 def health_check():
