@@ -6,16 +6,14 @@ export const metadata: Metadata = {
   description: "Bringing our AI to life",
 };
 
-export default function RootLayout({
+export default function AboutLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        {children}
-      </body>
-    </html>
+    <section>
+      {children}
+    </section>
   );
 }
