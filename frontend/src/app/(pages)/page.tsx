@@ -67,21 +67,29 @@ export default function Home() {
         )}
       </div>
 
-      {session ? (
-        <div style={{ marginTop: '1rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '4px' }}>
-          {loading ? (
-            <p>Loading.....</p>
-          ) : data?.error ? (
-            <p style={{ color: 'red' }}>{data.error}</p>
-          ) : (
-            <pre>{JSON.stringify(data, null, 2)}</pre>
-          )}
-        </div>
-      ) : (
-        <div style={{ marginTop: '1rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '4px' }}>
-          <p>Please sign in to view the data</p>
-        </div>
-      )}
+      <div style={{ marginTop: '1rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '4px' }}>
+        <h3 style={{ marginTop: 0 }}>Backend Data (Zero-Trust)</h3>
+        {loading ? (
+          <p>Loading from backend...</p>
+        ) : data?.error ? (
+          <div style={{ color: '#721c24', background: '#f8d7da', padding: '1rem', borderRadius: '4px', border: '1px solid #f5c6cb' }}>
+            <strong>Security Error:</strong> {data.error}
+            <p style={{ fontSize: '0.8rem', marginTop: '0.5rem' }}>
+              The backend rejected this request. This means your browser session is not verified or the token is invalid.
+            </p>
+          </div>
+        ) : (
+          <div>
+            <p style={{ color: '#155724', background: '#d4edda', padding: '0.5rem', borderRadius: '4px', display: 'inline-block' }}>
+              ✓ Backend Verified Successfully
+            </p>
+            <pre style={{ background: '#f8f9fa', padding: '1rem', overflow: 'auto', border: '1px solid #eee' }}>
+              {JSON.stringify(data, null, 2)}
+            </pre>
+          </div>
+        )}
+      </div>
+
     </div>
   );
 }
