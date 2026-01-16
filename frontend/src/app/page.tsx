@@ -30,10 +30,7 @@ export default function Home() {
   if (!mounted) {
     return (
       <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-        <h1>Next.js + FastAPI</h1>
-        <div style={{ marginTop: '1rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '4px' }}>
-          <p>Loading...</p>
-        </div>
+        <h1>Now loading....</h1>
       </main>
     );
   }
@@ -70,15 +67,21 @@ export default function Home() {
         )}
       </div>
 
-      <div style={{ marginTop: '1rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '4px' }}>
-        {loading ? (
-          <p>Loading.....</p>
-        ) : data?.error ? (
-          <p style={{ color: 'red' }}>{data.error}</p>
-        ) : (
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-        )}
-      </div>
+      {session ?
+        <div style={{ marginTop: '1rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '4px' }}>
+          {loading ? (
+            <p>Loading.....</p>
+          ) : data?.error ? (
+            <p style={{ color: 'red' }}>{data.error}</p>
+          ) : (
+            <pre>{JSON.stringify(data, null, 2)}</pre>
+          )}
+        </div>
+        :
+        <div style={{ marginTop: '1rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '4px' }}>
+          <p>Please sign in to view the data</p>
+        </div>
+      }
     </main>
   );
 }
