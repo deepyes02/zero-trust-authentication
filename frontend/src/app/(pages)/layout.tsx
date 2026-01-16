@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   description: "Google Authentication",
 };
 
+import Link from "next/link";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -21,11 +23,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={nunitoSans.className}>
-      <body style={{ margin: 0 }}>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+      <body style={{ margin: 0, minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+        <header style={{ padding: "1rem 2rem", background: "#f8f9fa", borderBottom: "1px solid #ddd", display: "flex", gap: "2rem", alignItems: "center" }}>
+          <h2 style={{ margin: 0, fontSize: "1.2rem", fontWeight: "bold" }}>Agentic AI</h2>
+          <nav style={{ display: "flex", gap: "1rem" }}>
+            <Link href="/" style={{ textDecoration: "none", color: "#007bff" }}>Home</Link>
+            <Link href="/about" style={{ textDecoration: "none", color: "#007bff" }}>About</Link>
+          </nav>
+        </header>
+        <main style={{ flex: 1 }}>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </main>
+        <footer style={{ padding: "1rem 2rem", background: "#f8f9fa", borderTop: "1px solid #ddd", textAlign: "center", color: "#666" }}>
+          &copy; 2026 Agentic AI Team
+        </footer>
       </body>
     </html>
   );
 }
+

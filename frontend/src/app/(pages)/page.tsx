@@ -29,14 +29,14 @@ export default function Home() {
 
   if (!mounted) {
     return (
-      <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
+      <div style={{ padding: '2rem' }}>
         <h1>Now loading....</h1>
-      </main>
+      </div>
     );
   }
 
   return (
-    <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
+    <div style={{ padding: '2rem' }}>
       <h1>Next.js + FastAPI + Google Auth</h1>
 
       <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '4px' }}>
@@ -67,7 +67,7 @@ export default function Home() {
         )}
       </div>
 
-      {session ?
+      {session ? (
         <div style={{ marginTop: '1rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '4px' }}>
           {loading ? (
             <p>Loading.....</p>
@@ -77,11 +77,12 @@ export default function Home() {
             <pre>{JSON.stringify(data, null, 2)}</pre>
           )}
         </div>
-        :
+      ) : (
         <div style={{ marginTop: '1rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '4px' }}>
           <p>Please sign in to view the data</p>
         </div>
-      }
-    </main>
+      )}
+    </div>
   );
 }
+

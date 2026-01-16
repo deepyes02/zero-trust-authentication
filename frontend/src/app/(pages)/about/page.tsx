@@ -8,7 +8,7 @@ export default function About() {
     console.log(session);
   }, []);
   return (
-    <div className={styles.about}>
+    <div className={styles.about} style={{ padding: '2rem' }}>
       <h1>About Us</h1>
       <p>We are a team of developers who are passionate about building great software.</p>
       <p>Please login to see what we do....</p>
